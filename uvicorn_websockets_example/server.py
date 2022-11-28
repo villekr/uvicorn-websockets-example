@@ -22,13 +22,11 @@ class MyASGIApplication(ASGIApplication):
 app = MyASGIApplication()
 
 if __name__ == "__main__":
-    subprotocols = f"{Subprotocol.ocpp201}, {Subprotocol.ocpp20}, {Subprotocol.ocpp16}"
-    headers = [("Sec-WebSocket-Protocol", subprotocols)]
     uvicorn.run(
         app,
         host="0.0.0.0",
         port=9000,
-        headers=headers,
         log_level="debug",
-        ws="wsproto",  # "websockets",
+        ws="websockets",
+        # ws="wsproto",
     )
